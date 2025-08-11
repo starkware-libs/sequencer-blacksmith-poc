@@ -32,7 +32,7 @@ concurrency:
 
 jobs:
   code_style:
-    runs-on: starkware-ubuntu-24.04-medium
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       # Environment setup.
       - uses: actions/checkout@v4
@@ -99,7 +99,7 @@ jobs:
         run: cargo machete
 
   run-workspace-tests:
-    runs-on: starkware-ubuntu-24.04-medium
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/bootstrap
@@ -108,7 +108,7 @@ jobs:
       - run: cargo test -p workspace_tests
 
   run-tests:
-    runs-on: starkware-ubuntu-24.04-large
+    runs-on: blacksmith-8vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
         with:
@@ -150,7 +150,7 @@ jobs:
           SEED: 0
 
   run-integration-tests:
-    runs-on: starkware-ubuntu-24.04-large
+    runs-on: blacksmith-8vcpu-ubuntu-2404
     steps:
       - uses: actions/checkout@v4
         with:

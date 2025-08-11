@@ -9,7 +9,7 @@ env:
 
 jobs:
   define_branches:
-    runs-on: starkware-ubuntu-24.04-small
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     outputs:
       branches: ${{ steps.branches.outputs.branches }}
     steps:
@@ -18,7 +18,7 @@ jobs:
         run: echo 'branches=["main", "main-v0.14.0"]' >> "$GITHUB_OUTPUT"
 
   codecov:
-    runs-on: starkware-ubuntu-24.04-large
+    runs-on: blacksmith-8vcpu-ubuntu-2404
     needs: define_branches
     strategy:
       matrix:
@@ -59,7 +59,7 @@ jobs:
           verbose: true
 
   feature_combos:
-    runs-on: starkware-ubuntu-24.04-large
+    runs-on: blacksmith-8vcpu-ubuntu-2404
     needs: define_branches
     strategy:
       matrix:
@@ -91,7 +91,7 @@ jobs:
         run: scripts/run_feature_combos_test.py
 
   run-integration-tests:
-    runs-on: starkware-ubuntu-24.04-large
+    runs-on: blacksmith-8vcpu-ubuntu-2404
     needs: define_branches
     strategy:
       matrix:

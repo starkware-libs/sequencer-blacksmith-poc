@@ -22,7 +22,7 @@ on:
 
 jobs:
   prepare:
-    runs-on: ubuntu-24.04
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     env:
       cluster: test
       namespace: test
@@ -67,7 +67,7 @@ jobs:
             deployments/sequencer/resources
 
   validate:
-    runs-on: ubuntu-24.04
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     needs: prepare
     env:
       dist_path: ./cdk8s-artifacts/dist

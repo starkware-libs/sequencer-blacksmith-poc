@@ -1245,6 +1245,7 @@ fn metrics_correctness() {
             count: 4,
             ..Default::default()
         },
+        transaction_time_until_commit: HistogramValue { sum: 0.0, count: 1, ..Default::default() },
     };
     expected_metrics.verify_metrics(&recorder);
 }
